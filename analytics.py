@@ -103,7 +103,7 @@ def analyze_tcav_results_from_file(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Analyze TCAV and Ranking scores from a CSV file.")
+    parser = argparse.ArgumentParser()
     parser.add_argument("csv_file", help="Path to the input CSV file.")
     parser.add_argument("-c", "--concept", default="feathers",
                         help="Name of the concept analyzed (for titles). Default: 'feathers'")

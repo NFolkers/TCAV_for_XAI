@@ -6,6 +6,7 @@ import torch.nn as nn
 import numpy as np
 import os
 import csv
+import argparse
 from PIL import Image
 
 from torch.utils.data import DataLoader, Dataset
@@ -292,16 +293,23 @@ if __name__ == "__main__":
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {DEVICE}")
 
+
+
     steps = ['setup', 'calculate_cav', 'score_class', 'ranking', 'log']
 
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--layer_name', type=str, default='layer4')
+    parser.add_argument('--log_filename', type=str, default='tcav_ranking_log_cosine.csv')
+    args = parser.parse_args()
+
+    LAYER_NAME_TO_ANALYZE = args.layer_name
+    LOG_FILENAME = args.log_filename
     CONCEPT_IMG_DIR = "./concepts/feathers"
     RANDOM_IMG_DIR = "./concepts/random_images" 
     IMAGENET_PARENT_DIR = "./data" 
     BATCH_SIZE = 64
     CONCEPT_NAME = "feathers"
-    LAYER_NAME_TO_ANALYZE = 'layer4'
-    LOG_FILENAME = "tcav_ranking_log_cosine.csv" 
 
     model = None
     concept_loader, random_loader = None, None

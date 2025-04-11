@@ -109,7 +109,7 @@ def sample_non_bird_images(
         copied_count += 1
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Sample non-bird images from dataset.")
+    parser = argparse.ArgumentParser()
     parser.add_argument("--data_root", type=str, default="./data", help="Root directory of the dataset")
     parser.add_argument("--split", type=str, default="train.X", help="Data split to sample from")
     parser.add_argument("--num_samples", type=int, default=250, help="Number of random samples to draw")
